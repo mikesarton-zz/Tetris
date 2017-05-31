@@ -313,4 +313,66 @@ void TetrisGame::startWithMode(Gamemode gameMode, int goal,bool isSinglePlayer){
 //  redémarre la partie
 void TetrisGame::restart(){
     _currentScore = Score();
-    _board                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+    _board.reset();
+    _figuresBag = FiguresBag(/*true*/);
+    _currentFigure = _figuresBag.getNextFigure();
+    _currentFigure.newPosition(_board.entryPoint());
+    calculateShadow();
+    _nextFigure = _figuresBag.getNextFigure();
+    _isGameOver = false;
+    _isWon = false;
+    _isFalling = false;
+    _tetrisMusic->reset();
+    _tetrisMusic->play();
+    _timerGame->reset();
+    Notify();
+}
+//  retourne vrai ou faux selon que la figure courante peut encore descendre ou non
+bool TetrisGame::checkIfIsBlocked(){
+    return !_board.canGoLower(_currentFigure);
+}
+
+//  remonte la figure courante de x lignes quand l'adversaire envoit des lignes
+void TetrisGame::upCurrentFigure(int nbLines) {
+    int maxHeightCF = 0;
+
+    for(Block bl : _currentFigure.getBlocks()) {
+        if (bl.getPosition().getY() > maxHeightCF) {
+            maxHeightCF = bl.getPosition().getY();
+        }
+    }
+
+    if ((maxHeightCF + nbLines) < _board.getBoardSize().second) {
+        std::vector<Block> newBlocksCF;
+        for(Block bl : _currentFigure.getBlocks()) {
+            newBlocksCF.emplace_back(bl.getPosition().getX(), bl.getPosition().getY() + nbLines, bl.getColor());
+        }
+        _currentFigure.setBlocks(newBlocksCF);
+    } else {
+        int maxPossible = _board.getBoardSize().second - maxHeightCF;
+        std::vector<Block> newBlocksCF;
+        for(Block bl : _currentFigure.getBlocks()) {
+            newBlocksCF.emplace_back(bl.getPosition().getX(), bl.getPosition().getY() + maxPossible, bl.getColor());
+        }
+        _currentFigure.setBlocks(newBlocksCF);
+    }
+    calculateShadow();
+}
+
+//  ajout les lignes que l'adversaire a faites dans le board
+void TetrisGame::updateGameFromOpponent(std::vector<std::vector<int>> lines) {
+    upCurrentFigure(lines.size()-1);
+    _board.addLines(lines);
+    Notify();
+}
+
+//  gère la fin de la partie quand l'adversaire a fini la sienne. Affiche "game over" ou "win" selon que l'adversaire a gagné ou perdu.
+void TetrisGame::endGameFromOpponent(GameMessage message) {
+    _isWon = (message.getTypeMessage() == TypeMessage::LOOSE);
+    _isGameOver = true;
+    endGame();
+    Notify();
+}
+
+}
+

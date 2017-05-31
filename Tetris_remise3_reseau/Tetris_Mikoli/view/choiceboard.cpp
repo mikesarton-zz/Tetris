@@ -236,4 +236,12 @@ void ChoiceBoard::Update(){
         _buttonRestart->setVisible(true);
     }
 
-}                                                                             
+}
+
+IpDialog *ChoiceBoard::getIpDialog(){
+    return _ipDialog;
+}
+
+}
+
+

@@ -360,4 +360,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="mythread_client_8cpp_source.html#l00081">81</a> of file <a class="el" href="mythread_client_8cpp_source.html">mythreadClient.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                    {</div><div class="line"><a name="l00082"></a><                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                                    {</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    _socket-&gt;write(QJsonDocument(message.serialize_to_json()).toJson());</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    _socket-&gt;flush();</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a1609481963008e914c77b9875331d86d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1609481963008e914c77b9875331d86d">&#9670;&nbsp;</a></span>setIsConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mikoli::MyThreadClient::setIsConnected </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setIsConnected to set the value isConnected </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">b</td><td>the bool value to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mythread_client_8cpp_source.html#l00117">117</a> of file <a class="el" href="mythread_client_8cpp_source.html">mythreadClient.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                         {</div><div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    _isConnected = b;</div><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>C:/Users/Olivier/Desktop/Mikoli_T_Final/Tetris_Mikoli/net/<a class="el" href="mythread_client_8h_source.html">mythreadClient.h</a></li>
+<li>C:/Users/Olivier/Desktop/Mikoli_T_Final/Tetris_Mikoli/net/<a class="el" href="mythread_client_8cpp_source.html">mythreadClient.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

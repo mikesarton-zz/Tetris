@@ -393,4 +393,74 @@ void Widget::endThread(){
 }
 
 void Widget::homeWithOutGameReinit(){
-    _choic                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    _choiceBoard.getButtonSinglePlayer()->setVisible(true);
+    _choiceBoard.getButtonTwoPlayers()->setVisible(true);
+    _choiceBoard.getButtonQuickGame()->setVisible(false);
+    _choiceBoard.getButtonNewGame()->setVisible(false);
+    _choiceBoard.getButtonRestart()->setVisible(false);
+    _choiceBoard.getButtonJoin()->setVisible(false);
+    _choiceBoard.hide();
+    _choiceBoard.getButtonHome()->setVisible(false);
+    _sideBoard.visibleMessage(false);
+    _sideBoard.setDisplay();
+}
+
+void Widget::infoServerStatus(){
+    if(_isServerOn){
+        _choiceBoard.getButtonServerOn()->setVisible(true);
+    }else{
+        _choiceBoard.getButtonServerOff()->setVisible(true);
+    }
+}
+
+void Widget::godMode(){
+    _choiceBoard.getButtonGodMode()->setVisible(false);
+    QPixmap bkgnd(":/images/image/backgroundi.png");
+    QPalette palette;
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
+    _godMode = true;
+}
+
+void Widget::connectionIp(QString ip){
+    _sideBoard.setIp(ip);
+    _sideBoard.setDisplay();
+
+}
+void Widget::connectionPort(QString ip){
+    _sideBoard.setPort(ip);
+    _sideBoard.setDisplay();
+}
+
+void Widget::sendLinesGodMode() {
+    srand((int)time(0));
+    int randomNumber = (rand() % _game->getBoard().getBoardSize().first + 1);
+    std::vector<std::vector<int>> lines;
+
+    for (int i=1; i<=_linesToSend; ++i) {
+        std::vector<int> l;
+        l.push_back(randomNumber);
+        lines.push_back(l);
+    }
+
+    switch(_linesToSend){
+    case 2: _deleteTwoLineSound->play();
+        break;
+    case 3: _deleteThreeLineSound->play();
+        break;
+    case 4: _deleteFourLineSound->play();
+        break;
+    }
+
+    _thread->sendMessage(GameMessage(TypeMessage::PARAM, lines));
+}
+
+void Widget::setLinesToSend(int nb) {
+    _linesToSend = nb;
+}
+
+
+
+
+
+

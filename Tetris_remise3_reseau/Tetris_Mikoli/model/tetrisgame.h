@@ -382,4 +382,32 @@ public:
      * \brief restart
      * Restart the game: reset the score, level, number of lines, board, figure's bag,
      * reset the sounds, reset the attriubutes, ...
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+     */
+    void restart();
+
+    /*!
+     * \brief upCurrentFigure
+     * \param nb Number of lines
+     *  Move the current figure to nb lines higher.
+     */
+    void upCurrentFigure (int nb);
+
+    /*!
+     * \brief updateGameFromOpponent
+     * \param lines Each vector represents a line, each int represents an abscisse where there is a hole in this line.
+     *  Add lines in the board. Theses lines come from the opponent.
+     */
+    void updateGameFromOpponent(std::vector<std::vector<int>> lines);
+
+    /*!
+     * \brief endGameFromOpponent
+     *  End the game according to the opponent status. If the opponent has won, this method calls the "game over" view. Otherwise, it
+     *  calls the "win" view.
+     */
+    void endGameFromOpponent(GameMessage);
+
+};
+
+}
+
+#endif // TETRISGAME_H

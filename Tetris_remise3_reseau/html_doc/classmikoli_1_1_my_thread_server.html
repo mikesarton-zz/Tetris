@@ -304,4 +304,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sendToClientTwo </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mythreadserver_8cpp_source.html#l00058">58</a> of file <a class="el" href="mythreadserver_8cpp_source.html">mythreadserver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                                       {</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    _socket-&gt;write(QJsonDocument(message.serialize_to_json()).toJson());</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    _socket-&gt;flush();</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<a id="a2bd35d3393069d7b0fcf87fd52a8a573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd35d3393069d7b0fcf87fd52a8a573">&#9670;&nbsp;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mikoli::MyThreadServer::setId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setId </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>1 if this thread is connected to the first client, 2 if it's the second. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mythreadserver_8cpp_source.html#l00063">63</a> of file <a class="el" href="mythreadserver_8cpp_source.html">mythreadserver.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                {</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    _id = id;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div></div><!-- fragment -->
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>C:/Users/Olivier/Desktop/Mikoli_T_Final/Tetris_Mikoli/net/<a class="el" href="mythreadserver_8h_source.html">mythreadserver.h</a></li>
+<li>C:/Users/Olivier/Desktop/Mikoli_T_Final/Tetris_Mikoli/net/<a class="el" href="mythreadserver_8cpp_source.html">mythreadserver.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
