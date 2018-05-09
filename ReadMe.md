@@ -5,6 +5,6 @@
 
 - Auteurs : Mike Sarton & Olivier Cordier
 
-![](main.png)
-![](game.png)
-![](fall.png)
+![](main.JPG)
+![](game.JPG)
+![](fall.JPG)
